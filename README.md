@@ -9,7 +9,7 @@ Dengan membuat class yang berisi SharedPreferences, kita bisa bikin RecyclerView
 
 
 ## Cara buatnya
-Nih classnye sama sedikit penjelasan
+Nih classnya sama sedikit penjelasan
 
 ```java
 public class SharedPref {
