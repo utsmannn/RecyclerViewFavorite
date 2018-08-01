@@ -1,8 +1,14 @@
+/*
+ * Created by Muhammad Utsman (orang kece) on 8/2/18 4:15 AM
+ * Copyright (c) 2018. All rights reserved.
+ *
+ * Last modified 8/2/18 5:08 AM
+ */
+
 package utsman.kucingapes.recyclerviewfavorite;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -70,9 +76,10 @@ public class SharedPref {
         return (ArrayList<Item>) favorites;
     }
 
-    public void addIndex(Context context, String title) {
+    public void addIndex(Context context, String string) {
         List<String> names;
-        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME,
+                MODE_PRIVATE);
         String json = preferences.getString(INDEX, null);
         Gson gson = new Gson();
         Type type = new TypeToken<List<String>>() {}.getType();
@@ -80,7 +87,7 @@ public class SharedPref {
         if (names == null) {
             names = new ArrayList<>();
         }
-        names.add(title);
+        names.add(string);
         SharedPreferences.Editor editor = preferences.edit();
 
         String listJson = gson.toJson(names);
@@ -88,9 +95,10 @@ public class SharedPref {
         editor.apply();
     }
 
-    public void removeIndex(Context context, String title) {
+    public void removeIndex(Context context, String string) {
         List<String> names;
-        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME,
+                MODE_PRIVATE);
         String json = preferences.getString(INDEX, null);
         Gson gson = new Gson();
         Type type = new TypeToken<List<String>>() {}.getType();
@@ -98,7 +106,7 @@ public class SharedPref {
         if (names == null) {
             names = new ArrayList<>();
         }
-        names.remove(title);
+        names.remove(string);
         SharedPreferences.Editor editor = preferences.edit();
 
         String listJson = gson.toJson(names);
@@ -106,16 +114,17 @@ public class SharedPref {
         editor.apply();
     }
 
-    public int setIndex(Context context, String title) {
+    public int setIndex(Context context, String string) {
         List<String> names;
-        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME,
+                MODE_PRIVATE);
         String json = preferences.getString(INDEX, null);
         Gson gson = new Gson();
         Type type = new TypeToken<List<String>>() {}.getType();
         names = gson.fromJson(json, type);
         int position = 0;
         if (names != null) {
-            position = names.indexOf(title);
+            position = names.indexOf(string);
         }
         return position;
     }
