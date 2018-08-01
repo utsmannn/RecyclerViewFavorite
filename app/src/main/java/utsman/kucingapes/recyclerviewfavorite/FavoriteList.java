@@ -23,6 +23,8 @@ public class FavoriteList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setTitle("Item Favorite");
+
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         LinearLayoutMargin layoutMargin = new LinearLayoutMargin(20);

@@ -2,33 +2,20 @@ package utsman.kucingapes.recyclerviewfavorite;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class Detail extends AppCompatActivity {
 
-    public static final String PREFS_NAME = "PRODUCT_APP";
-    public static final String FAVORITES = "Product_Favorite";
+    private static final String PREFS_NAME = "FILE_PREFERENCES";
+    private static final String FAVORITES = "ITEM_FAVORITE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

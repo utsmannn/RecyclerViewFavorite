@@ -16,10 +16,10 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SharedPref {
 
-    private static final String PREFS_NAME = "PRODUCT_APP";
-    private static final String FAVORITES = "Product_Favorite";
+    private static final String PREFS_NAME = "FILE_PREFERENCES";
+    private static final String FAVORITES = "ITEM_FAVORITE";
 
-    private static final String INDEX = "INDEXLIST";
+    private static final String INDEX = "INDEX_LIST";
 
     private void saveFavorites(Context context, List<Item> favorites) {
         SharedPreferences settings;
@@ -83,8 +83,8 @@ public class SharedPref {
         names.add(title);
         SharedPreferences.Editor editor = preferences.edit();
 
-        String listjson = gson.toJson(names);
-        editor.putString(INDEX, listjson);
+        String listJson = gson.toJson(names);
+        editor.putString(INDEX, listJson);
         editor.apply();
     }
 
@@ -101,8 +101,8 @@ public class SharedPref {
         names.remove(title);
         SharedPreferences.Editor editor = preferences.edit();
 
-        String listjson = gson.toJson(names);
-        editor.putString(INDEX, listjson);
+        String listJson = gson.toJson(names);
+        editor.putString(INDEX, listJson);
         editor.apply();
     }
 
