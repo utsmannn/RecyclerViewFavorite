@@ -35,8 +35,9 @@ public class Detail extends AppCompatActivity {
             Glide.with(this).load(img).into(imageDetail);
         }
 
+        /* pasang dulu sharedpreferencesnya */
         SharedPreferences preferences = getApplicationContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        final String json = preferences.getString(FAVORITES, null);
+        final String json = preferences.getString(FAVORITES, null); // panggil string json nye
 
         if (json != null && json.contains(title)) {
             actionButton.setImageResource(R.drawable.ic_favorite);
@@ -52,20 +53,21 @@ public class Detail extends AppCompatActivity {
     }
 
     private void addFavo(String json, FloatingActionButton actionButton, String img, String title) {
-        Item item = new Item(img, title);
+        Item item = new Item(img, title); // pasang objek yang mau ditambahin ke recyclerview
 
-        if (json != null && json.contains(title)) {
+        /* ngecek apakah itemnya udeh ada di favorit ape belum */
+        if (json != null && json.contains(title)) { // andaikata udah ada
             actionButton.setImageResource(R.drawable.ic_favorite_border);
             Toast.makeText(getApplicationContext(), "dihapus", Toast.LENGTH_SHORT).show();
             SharedPref sharedPref = new SharedPref();
             int position = sharedPref.setIndex(getApplicationContext(), title);
-            sharedPref.removeFavorite(getApplicationContext(), position);
-            sharedPref.removeIndex(getApplicationContext(), title);
+            sharedPref.removeFavorite(getApplicationContext(), position); // maka metodenya adalah remove item
+            sharedPref.removeIndex(getApplicationContext(), title); // nah ini remove string single nya buat acuan posisi
 
-        } else {
+        } else { // nah kalau belom
             actionButton.setImageResource(R.drawable.ic_favorite);
             SharedPref sharedPref = new SharedPref();
-            sharedPref.addFavorite(getApplicationContext(), item);
+            sharedPref.addFavorite(getApplicationContext(), item); // ya tambahin deh
             sharedPref.addIndex(getApplicationContext(), title);
 
             Toast.makeText(getApplicationContext(), "ditambahkan", Toast.LENGTH_SHORT).show();
