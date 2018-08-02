@@ -2,11 +2,20 @@
 
 ![](img/pre.gif)
 
-## Penjelasan
-SharedPreferences gunanya untuk menyimpan informasi kecil-kecilan, tapi dalam beberapa kasus juga bisa dalam skala besar. Informasi itu akan di simpan dalam file xml yang berisi string, untuk kasus list, gampangnye dikonvert dulu ke json sebagai string terus diambil dan di konversi lagi sebagai list.
+## Penjelasan Dikit
+SharedPreferences gunanya untuk menyimpan informasi kecil-kecilan, tapi dalam beberapa kasus juga bisa dalam skala besar. Informasi itu akan di simpan dalam file xml yang berisi string pada folder data/data/packageaplikasi/shared_prefs, untuk kasus list, gampangnye dikonvert dulu ke json sebagai string terus diambil dan di konversi lagi sebagai list.
+
+![](img/ss1.png)
+
+(di atas adalah gambar letak folder shared_prefs yang berisi file xml nya)
+
+![](img/ss2.png)
+
+(nah ini nih isi dari file xml yang telah dibuat dengan sharedpreferences)
+
+
 
 Dengan membuat class yang berisi SharedPreferences, kita bisa bikin RecyclerView yang bisa dibikin fitur favorit.
-
 
 ## Cara buatnya
 Nih classnya sama sedikit penjelasan
@@ -171,7 +180,7 @@ if (json != null && json.contains(title)) { // andaikata udah ada
 ```
 link https://github.com/kucingapes/RecyclerViewFavorite/blob/master/app/src/main/java/utsman/kucingapes/recyclerviewfavorite/Detail.java
 
-Dah ah sekian.
+Dah ah sekian silahkan dicoba.
 
 
 
