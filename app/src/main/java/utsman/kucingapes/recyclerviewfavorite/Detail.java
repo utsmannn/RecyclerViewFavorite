@@ -2,10 +2,13 @@ package utsman.kucingapes.recyclerviewfavorite;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +28,7 @@ public class Detail extends AppCompatActivity {
         final String img = getIntent().getStringExtra("img");
         final String title = getIntent().getStringExtra("title");
         final FloatingActionButton actionButton = findViewById(R.id.favorite_button);
+        final NestedScrollView scrollView = findViewById(R.id.nested);
 
         if (img != null) {
 
@@ -50,6 +54,28 @@ public class Detail extends AppCompatActivity {
                 addFavo(json, actionButton, img, title);
             }
         });
+
+        setupPosition(scrollView, actionButton);
+    }
+
+    private void setupPosition(NestedScrollView scrollView, FloatingActionButton actionButton) {
+        scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+
+            }
+        });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+                    if (i1 > i3) {
+                        Toast.makeText(getApplicationContext(), "down", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
     private void addFavo(String json, FloatingActionButton actionButton, String img, String title) {
